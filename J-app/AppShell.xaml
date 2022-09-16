@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="J_app.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:J_app"
+    xmlns:view="clr-namespace:J_app.View"
+    Shell.FlyoutItemIsVisible="False"
+    Shell.TabBarIsVisible="True">
+
+    <TabBar>
+        <Tab Title="A">
+            <ShellContent Title="A"
+                          ContentTemplate="{DataTemplate local:MainPage}"
+                          Route="MainPage" />
+        </Tab>
+        <Tab Title="B">
+            <ShellContent Title="B"
+                          ContentTemplate="{DataTemplate view:WeekBPage}"
+                          Route="MainPage" />
+        </Tab>
+    </TabBar>
+</Shell>

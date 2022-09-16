@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="J_app.View.DetailsPage"
+             xmlns:viewmodel="clr-namespace:J_app.ViewModel"
+             x:DataType="viewmodel:DetailsViewModel"
+             Title="Details">
+    <VerticalStackLayout VerticalOptions="Start" Padding="20" Spacing="5">
+        <Label Text="{Binding Period.Subject.Code}"
+               FontSize="24"/>
+        <Label Text="{Binding Period.Subject.Name}"
+               FontSize="18"/>
+        <Label>
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="{Binding Period.Subject.Classroom}"
+                          FontSize="18"
+                          TextColor="Blue"
+                          TextDecorations="Underline">
+                        <Span.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding TapCommand}"
+                                                  CommandParameter="{Binding Period.Subject.Classroom}"/>
+                        </Span.GestureRecognizers>
+                    </Span>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Label>
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="{Binding Period.Subject.Sites}"
+                          FontSize="18"
+                          TextColor="Blue"
+                          TextDecorations="Underline">
+                    </Span>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="J_app.View.WeekBPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:model="clr-namespace:J_app.Model"
+    xmlns:viewmodel="clr-namespace:J_app.ViewModel"
+    x:DataType="viewmodel:TableViewModel"
+    Title="Table - Week B">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <viewmodel:TableColor x:Key="TableColor"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <VerticalStackLayout Padding="20" Spacing="10">
+        <HorizontalStackLayout HorizontalOptions="Center"
+                               HeightRequest="60">
+            <Grid Padding="6.67"
+                  ColumnSpacing="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="85"/>
+                    <ColumnDefinition Width="85"/>
+                    <ColumnDefinition Width="85"/>
+                    <ColumnDefinition Width="85"/>
+                </Grid.ColumnDefinitions>
+                <Frame Grid.Column="0"
+                       BackgroundColor="LightGray"
+                       BorderColor="Transparent"
+                       HasShadow="True"
+                       Padding="5">
+                    <Label Text="1-2&#10;8.30-10.10" HorizontalTextAlignment="Center"/>
+                </Frame>
+                <Frame Grid.Column="1"
+                       BackgroundColor="LightGray"
+                       BorderColor="Transparent"
+                       HasShadow="True"
+                       Padding="5">
+                    <Label Text="3-4&#10;10.20-12.00" HorizontalTextAlignment="Center"/>
+                </Frame>
+                <Frame Grid.Column="2"
+                       BackgroundColor="LightGray"
+                       BorderColor="Transparent"
+                       HasShadow="True"
+                       Padding="5">
+                    <Label Text="6-7&#10;13.00-14.40" HorizontalTextAlignment="Center"/>
+                </Frame>
+                <Frame Grid.Column="3"
+                       BackgroundColor="LightGray"
+                       BorderColor="Transparent"
+                       HasShadow="True"
+                       Padding="5">
+                    <Label Text="8-9&#10;14.50-16.30" HorizontalTextAlignment="Center"/>
+                </Frame>
+            </Grid>
+        </HorizontalStackLayout>
+        <CollectionView ItemsSource="{Binding Table2}">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"
+                                 Span="4"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Period">
+                    <Grid Padding="5"
+                          HeightRequest="110">
+                        <Frame BorderColor="Transparent"
+                               BackgroundColor="{Binding Day, Converter={StaticResource TableColor}}"
+                               HasShadow="True"
+                               Padding="10"
+                               HeightRequest="100">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    CommandParameter="{Binding .}"
+                                    Command="{Binding Source=
+                                    { RelativeSource AncestorType=
+                                    { x:Type viewmodel:TableViewModel}}, Path=GoToDetailsCommand}"/>
+                            </Frame.GestureRecognizers>
+                            <VerticalStackLayout VerticalOptions="Center">
+                                <Label Text="{Binding Subject.Code}"
+                                       HorizontalTextAlignment="Center"/>
+                                <Label Text="{Binding Room}"
+                                       HorizontalTextAlignment="Center"/>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>
